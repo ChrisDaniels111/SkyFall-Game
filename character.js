@@ -23,6 +23,7 @@ class Character {
 
 var stickMan = new Character(100, 0);
 
+// when character comes in contact with a falling item
 var contact = function (stickCharacter, fallingItem) {
     console.log(fallingItem.type);
     stickCharacter.health = stickCharacter.health + fallingItem.health;
@@ -31,6 +32,7 @@ var contact = function (stickCharacter, fallingItem) {
 contact(stickMan, cloud);
 console.log(stickMan);
 
+//game over promt
 var gameOver = function(stickMan){
     if (stickMan.health <= 0){
         alert("game over");
