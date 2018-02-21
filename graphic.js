@@ -15,7 +15,6 @@ var fallingSprites = [];
 
 
 function startGame() {
-    makeSprites(5);
     myGamePiece = new Component(75, 75, "red", 205, 195);
     myGameArea.start();
     
@@ -28,8 +27,10 @@ var myGameArea = {
         this.canvas.width = 480;
         this.canvas.height = 270;
         this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        // document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        $('.game').append(this.canvas);
         this.interval = setInterval(updateGameArea, 20);
+        this.spriteInterval = setInterval(setupSprites, 2000);
 
         $('body').on('keydown', function(e) {
             myGameArea.key = e.keyCode;
@@ -86,7 +87,7 @@ function onRightWall() {
 // y increase moves downward
 function updateGameArea() {
     myGameArea.clear();
-    myGamePiece.speedX = 0;         // basically stops it from moving onward in direction set
+    myGamePiece.speedX = 0;         // stops it from increasing base speed
     myGamePiece.speedY = 0;
     if (myGameArea.key && myGameArea.key == 37 && !onLeftWall()) {
         moveleft();
@@ -114,7 +115,7 @@ function moveright() {
 // need to make random objects fall [DONE]
 
 function randomX() {
-    return Math.floor(Math.random() * 471);         // return x value between 0 and 430
+    return Math.floor(Math.random() * 471);         // return x value between 0 and 470
 }
 function randomY() {
     return -10;                                     // start right outside canvas 
@@ -144,10 +145,6 @@ function updateSprites() {
 }
 
 
-
-
-
-
 // need to plug in contact module between character and falling objects
 function inContact(characterSprite, fallingSprite) {
     var playerX = characterSprite.x,
@@ -171,3 +168,14 @@ function inBetween(num1, num2, widthHeight) {
     }
     return false;
 }
+
+// build sprites at a certain interval
+function setupSprites() {
+    var amountOfSprites = Math.floor(Math.random() * 8) + 1; // 1 inclusive to 9 exclusive
+    makeSprites(amountOfSprites);
+}
+
+
+
+
+// add module to attach falling sprites to objects; myGamePiece to character
