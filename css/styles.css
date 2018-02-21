@@ -72,3 +72,10 @@ body{
 .score-card{
     border: 2px solid black;
 }
+
+.start-button{
+    margin-top: 150px;
+    margin-right: 60px;
+    margin-left: 60px;
+}
+

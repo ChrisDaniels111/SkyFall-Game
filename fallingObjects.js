@@ -125,9 +125,9 @@ $(document).ready(function () {
 
     var userPromptInput = usernamePrompt();
 
-    $(".score-card").append(userPromptInput);
+    $(".").append(userPromptInput);
 
-    //////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////
 
 
 
@@ -139,7 +139,7 @@ $(document).ready(function () {
 
     ///////////////       GAME OVER ALERT     //////////////////////
 
-    var loser = alert("YOU LOST, GAME OVER:(")
+    // var loser = alert("YOU LOST, GAME OVER:(")
 
     
 
