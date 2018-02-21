@@ -250,7 +250,7 @@ function randomY() {
     return - (Math.floor(Math.random() * 30) + 10); // start right outside canvas; between -10 and -30
 }
 function speedSelector() {
-    return (Math.random() * 2) + 0.1;
+    return (Math.random() * 2) + 0.1;               // create a speed selector based on levels
 }
 
 function inBetween(num1, num2, widthHeight) {
