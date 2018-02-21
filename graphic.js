@@ -132,6 +132,31 @@ function makeSprites(amount) {
     }
 }
 
+// use fallingObjectArray in testObjects.js
+function makeSprites() {
+    for (var i = 0; i < fallingObjectArray.length; i++) {
+        var fallObject = fallingObjectArray[i];
+        var color;
+
+        // can be made into a function to select images
+        switch (fallObject.type) {
+            case 'cloud': 
+                color = 'white';
+                break;
+            case 'sun':
+                color = 'orange';
+                break;
+            case 'dollar1':
+                color = 'green';
+                break;
+        }
+
+
+        var newSprite = new Component(10, 10, color, randomX(), randomY());
+        fallingSprites.push(newSprite);
+    }
+}
+
 function updateSprites() {
     for (var i = 0; i < fallingSprites.length; i++) {
         fallingSprites[i].y += speedSelector();
