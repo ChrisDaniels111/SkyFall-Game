@@ -6,8 +6,11 @@
 
 // Build 
 
+
+
 $('document').ready(function() {
     startGame();
+
 });
 
 
@@ -20,38 +23,51 @@ $('document').ready(function() {
 // ******************** Game Variables **********************
 
 var myGamePiece;
-var fallingSprites = [];
+var fallingSprites = [];            
 var colorDictionary = {
-    cloud: 'white',
-    sun: 'orange',
-    lightning: 'yellow',
-    healthBall: '#0061ff',
-    megaHealthBall: '#e5e112',
-    dollar1: 'green',
-    dollar5: '#12e51c',
-    dollar10: '#48d64f',
-    dollar20: '#17841d',
+    cloud: './images/boo.png',
+    sun: './images/fire.png',
+    lightning: './images/bolt.png',
+    healthBall: './images/mushroom.png',
+    megaHealthBall: './images/berry.png',
+    dollar1: './images/coin.png',
+    dollar5: './images/coin.png',
+    dollar10: './images/coin.png',
+    dollar20: './images/coin.png',
 }
+
+
 
 // *********************************************************
 
 
 // class for sprite; speedX/Y allows for acceleration
 class Component {
-    constructor(width, height, color, x, y) {
+    constructor(width, height, color, x, y, fileType) {
+        
         this.width = width;
         this.height = height;
         this.speedX = 0;
         this.speedY = 0;
         this.color = color;
         this.x = x;
-        this.y = y;  
+        this.y = y; 
+        
+        this.fileType = fileType;
+        if (fileType == 'image') {
+            this.image = new Image();
+            this.image.src = color;
+        } 
     }
       
     update() {
         var ctx = myGameArea.context;
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        if (this.fileType == 'image') {
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        } else {
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
     }
     newPos() {
         this.x += this.speedX;
@@ -60,7 +76,7 @@ class Component {
 }
 
 function startGame() {
-    myGamePiece = new Component(75, 75, "red", 205, 195);
+    myGamePiece = new Component(75, 75, "./images/bulbasaur.png", 205, 195, 'image');
     myGameArea.start();
 }
 
@@ -76,7 +92,7 @@ var myGameArea = {
 
         // interval of updating character sprite and falling sprites
         this.interval = setInterval(updateGameArea, 20);
-        this.spriteInterval = setInterval(makeSprites, 2000);
+        this.spriteInterval = setInterval(makeSprites, 1000);
 
         // keyboard event listeners
         $('body').on('keydown', function(e) {
@@ -89,27 +105,50 @@ var myGameArea = {
     },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+    stop : function () {
+        clearInterval(this.interval);
+        clearInterval(this.spriteInterval);
     }
 }
 
 // y increase moves downward
 function updateGameArea() {
-    myGameArea.clear();
-    myGamePiece.speedX = 0;         // stops it from increasing base speed
-    myGamePiece.speedY = 0;
+    // call data from testObject.js
+    // gameover check
+    if (player0.gameover() && !player0.won()) {
 
-    // changes our sprite's x position
-    if (myGameArea.key && myGameArea.key == 37 && !onLeftWall()) {
-        moveleft();
-    }
-    if (myGameArea.key && myGameArea.key == 39 && !onRightWall()) {
-        moveright();
-    }
+        myGameArea.stop();
+        alert("Gameover! You lost!");
 
-    // updates the position of all sprites (removes some) each frame update
-    myGamePiece.newPos();
-    myGamePiece.update();
-    updateSprites();
+    } else if (player0.gameover() && player0.won()) {
+
+        myGameArea.stop();
+        alert(`You Won! Your score was ${player0.points}`);
+
+    } else {
+
+        
+
+        // regular game play
+        myGameArea.clear();
+        myGamePiece.speedX = 0;         // stops it from increasing base speed
+        myGamePiece.speedY = 0;
+
+        // changes our sprite's x position
+        if (myGameArea.key && myGameArea.key == 37 && !onLeftWall()) {
+            moveleft();
+        }
+        if (myGameArea.key && myGameArea.key == 39 && !onRightWall()) {
+            moveright();
+        }
+
+        // updates the position of all sprites (removes some) each frame update
+        myGamePiece.newPos();
+        myGamePiece.update();
+        updateGameLevel();              // adjusts level based on points; in testObjects.js
+        updateSprites();
+    }
 }
 
 ////////////////////////////////////////////////////////////
@@ -155,11 +194,18 @@ function onRightWall() {
 ////////////////////////////////////////////////////////////
 
 function updateSprites() {
+    var contactingSprites = [];
     for (var i = 0; i < fallingSprites.length; i++) {
-        fallingSprites[i].y += speedSelector();
-        fallingSprites[i].id = i;                   // make new attribute for falling sprites
+        fallingSprites[i].speedY = speedSelector();
         fallingSprites[i].update();
+        fallingSprites[i].newPos();
     }
+
+    // Build feature to change points
+    contactingSprites = fallingSprites.filter(sprite => inContact(myGamePiece, sprite));
+    updateStatsAfterContact(player0, contactingSprites);
+
+    // contact sprites will be deleted in line 170
     fallingSprites = fallingSprites.filter(sprite => !inContact(myGamePiece, sprite));       // delete sprites that are in contact with piece
     fallingSprites = fallingSprites.filter(sprite => sprite.y <= 480);                       // delete sprites that are out of the frame
 }
@@ -172,11 +218,23 @@ function makeSprites() {
         var color;
 
         color = spriteColor(fallObject);
+        // console.log(color);
 
-        var newSprite = new Component(10, 10, color, randomX(), randomY());
+        var newSprite = new Component(20, 20, color, randomX(), randomY(), 'image');
+        
+        // add tracker to sprite type in data
+        // add unique data ability to points/health
+        newSprite.type = fallObject.type;
+        newSprite.points = fallObject.points;
+        newSprite.health = fallObject.health;
+        
         fallingSprites.push(newSprite);
     }
+    setFallingObjects(level);               // calls testObjects.js and changes the fallingObjectArray loadout
+    console.log('level', level);
+    console.log("fallingSprites", fallingSprites);
 }
+
 
 ////////////////////////////////////////////////////////////
 ///////////////////// Helper Functions /////////////////////
@@ -189,10 +247,10 @@ function randomX() {
     return Math.floor(Math.random() * 471);         // return x value between 0 and 470
 }
 function randomY() {
-    return -10;                                     // start right outside canvas 
+    return - (Math.floor(Math.random() * 30) + 10); // start right outside canvas; between -10 and -30
 }
 function speedSelector() {
-    return Math.floor(Math.random() * 4);
+    return (Math.random() * 2) + 0.1;
 }
 
 function inBetween(num1, num2, widthHeight) {
