@@ -36,6 +36,7 @@ class FallingObject {
 
 }
 
+// helper function that allows building different amounts of different FallingObjects
 function buildFallingObjects(arrayOfTypes, arrayOfAmount) {
     for (var i = 0; i < arrayOfTypes.length; i++) {
         var type = arrayOfTypes[i][0],
@@ -49,6 +50,7 @@ function buildFallingObjects(arrayOfTypes, arrayOfAmount) {
     }
 }
 
+// create falling objects base on level; example: 3 clouds, 5 suns, 2 dollar1
 function setFallingObjects(level) {
     var typesToCreate = [];
     var arrayOfAmount = [];         // how many clouds/suns/dollars you want to make in array form
@@ -65,3 +67,6 @@ function setFallingObjects(level) {
 
 var player0 = new Character(100, 0);
 var fallingObjectArray = [];
+
+// fill the array
+setFallingObjects(1);
