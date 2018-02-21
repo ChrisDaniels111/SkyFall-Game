@@ -27,6 +27,10 @@ var fallingObjectData = {
     dollar20: ['dollar20', 20, 5]
 }
 
+// **********************
+// build an api connection to create special falling objects []
+// **********************
+
 class FallingObject {
     constructor(type, points, health) {
         this.type = type;
@@ -36,8 +40,10 @@ class FallingObject {
 
 }
 
+// uses global array fallingObjectArray
 // helper function that allows building different amounts of different FallingObjects
 function buildFallingObjects(arrayOfTypes, arrayOfAmount) {
+    fallingObjectArray = [];    // reset the global object array every time 
     for (var i = 0; i < arrayOfTypes.length; i++) {
         var type = arrayOfTypes[i][0],
             points = arrayOfTypes[i][1],
@@ -49,6 +55,7 @@ function buildFallingObjects(arrayOfTypes, arrayOfAmount) {
         }
     }
 }
+
 
 // create falling objects base on level; example: 3 clouds, 5 suns, 2 dollar1
 function setFallingObjects(level) {
@@ -65,22 +72,25 @@ function setFallingObjects(level) {
 
 // keys have to be entered via [] notation
 var levelData = {
-    1: ['cloud', 'sun', 'lightning'],
-    2: ['healthBall', 'dollar1', 'sun', 'lightning'],
+    1: ['dollar1', 'dollar5', 'dollar10'],
+    2: ['healthBall', 'cloud', 'sun', 'lightning'],
+    3: ['cloud', 'sun', 'lightning']
 };
 var levelAmount = {
-    1: [2, 4, 6],
-    2: [4, 4, 1, 1]
+    1: [1, 1, 1],
+    2: [1, 1, 1, 1],
+    3: [2, 3, 2]
 }
 
 
 // current player stats
 var player0 = new Character(100, 0);
 var fallingObjectArray = [];
+var level = 1;
 
 // fill the array
-setFallingObjects(2);
-console.log(fallingObjectArray);
+// this does not update during gameplay currently; provides a template of what will be created each time
+// setFallingObjects(level);
 
 
 // takes in an array of sprites in contact and apply points
@@ -95,7 +105,20 @@ function updateStatsAfterContact(player, contactingObjects) {
     }   
 }
 
-
+function updateGameLevel() {
+    var points = player0.points;
+    if (points >= 20 && points < 35 && level == 1) {
+        level++;                         // only allow level to incrememnt up
+    } else if (points >= 35 && points < 50 && level == 2) {
+        level++;
+    } else if (points >= 50 && points < 65 && level == 3) {
+        level++;
+    } else if (points >= 65 && points < 80 && level == 4) {
+        level++;
+    } else if (points >= 80 && level == 5) {
+        level++;
+    } 
+}
 
 
 
