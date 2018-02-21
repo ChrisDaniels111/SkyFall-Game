@@ -33,15 +33,19 @@ contact(stickMan, cloud);
 console.log(stickMan);
 
 //game over promt
-var gameOver = function(stickMan){
-    if (stickMan.health <= 0){
+var gameOver = function (stickMan) {
+    if (stickMan.health <= 0) {
         alert("game over");
         console.log("game over");
     }
-    else if  (stickMan.points >= 100) {
-        alert("you win");
+    else if (stickMan.points >= 100) {
+        // alert("you win");
+        var usernamePrompt = prompt("!!ENTER USERNAME!!", "STICKMAN :)");
+
+        var scorePrompt = prompt("!!ENTER SCORE!!", "000");
+
         console.log("you win");
-        
+
     }
     else {
         console.log("function is runing");
