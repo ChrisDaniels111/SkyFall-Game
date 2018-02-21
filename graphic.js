@@ -89,27 +89,46 @@ var myGameArea = {
     },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+    stop : function () {
+        clearInterval(this.interval);
     }
 }
 
 // y increase moves downward
 function updateGameArea() {
-    myGameArea.clear();
-    myGamePiece.speedX = 0;         // stops it from increasing base speed
-    myGamePiece.speedY = 0;
+    // call data from testObject.js
+    // gameover check
+    if (player0.gameover() && !player0.won()) {
 
-    // changes our sprite's x position
-    if (myGameArea.key && myGameArea.key == 37 && !onLeftWall()) {
-        moveleft();
-    }
-    if (myGameArea.key && myGameArea.key == 39 && !onRightWall()) {
-        moveright();
-    }
+        myGameArea.stop();
+        alert("Gameover! You lost!");
 
-    // updates the position of all sprites (removes some) each frame update
-    myGamePiece.newPos();
-    myGamePiece.update();
-    updateSprites();
+    } else if (player0.gameover() && player0.won()) {
+
+        myGameArea.stop();
+        alert("You Won!");
+
+    } else {
+
+        // regular game play
+        myGameArea.clear();
+        myGamePiece.speedX = 0;         // stops it from increasing base speed
+        myGamePiece.speedY = 0;
+
+        // changes our sprite's x position
+        if (myGameArea.key && myGameArea.key == 37 && !onLeftWall()) {
+            moveleft();
+        }
+        if (myGameArea.key && myGameArea.key == 39 && !onRightWall()) {
+            moveright();
+        }
+
+        // updates the position of all sprites (removes some) each frame update
+        myGamePiece.newPos();
+        myGamePiece.update();
+        updateSprites();
+    }
 }
 
 ////////////////////////////////////////////////////////////
@@ -155,11 +174,18 @@ function onRightWall() {
 ////////////////////////////////////////////////////////////
 
 function updateSprites() {
+    var contactingSprites = [];
     for (var i = 0; i < fallingSprites.length; i++) {
         fallingSprites[i].y += speedSelector();
         fallingSprites[i].id = i;                   // make new attribute for falling sprites
         fallingSprites[i].update();
     }
+
+    // Build feature to change points
+    contactingSprites = fallingSprites.filter(sprite => inContact(myGamePiece, sprite));
+    updateStatsAfterContact(player0, contactingSprites);
+
+    // contact sprites will be deleted in line 170
     fallingSprites = fallingSprites.filter(sprite => !inContact(myGamePiece, sprite));       // delete sprites that are in contact with piece
     fallingSprites = fallingSprites.filter(sprite => sprite.y <= 480);                       // delete sprites that are out of the frame
 }
@@ -174,6 +200,13 @@ function makeSprites() {
         color = spriteColor(fallObject);
 
         var newSprite = new Component(10, 10, color, randomX(), randomY());
+
+        // add tracker to sprite type in data
+        // add unique data ability to points/health
+        newSprite.type = fallObject.type;
+        newSprite.points = fallObject.points;
+        newSprite.health = fallObject.health;
+        
         fallingSprites.push(newSprite);
     }
 }

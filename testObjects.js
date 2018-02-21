@@ -53,20 +53,49 @@ function buildFallingObjects(arrayOfTypes, arrayOfAmount) {
 // create falling objects base on level; example: 3 clouds, 5 suns, 2 dollar1
 function setFallingObjects(level) {
     var typesToCreate = [];
-    var arrayOfAmount = [];         // how many clouds/suns/dollars you want to make in array form
-    if (level == 1) {
-        typesToCreate.push(fallingObjectData.cloud);
-        typesToCreate.push(fallingObjectData.sun);
-        typesToCreate.push(fallingObjectData.dollar1);
-        arrayOfAmount = [2, 4, 6];
-        buildFallingObjects(typesToCreate, arrayOfAmount);
+    var levelObjects = levelData[level];    // ex. [cloud, sun, lightning]
+
+    for (var i = 0; i < levelObjects.length; i++) {
+        var objectToPush = fallingObjectData[levelObjects[i]];
+        typesToCreate.push(objectToPush);
     }
+    buildFallingObjects(typesToCreate, levelAmount[level]);
 
 }
 
+// keys have to be entered via [] notation
+var levelData = {
+    1: ['cloud', 'sun', 'lightning'],
+    2: ['healthBall', 'dollar1', 'sun', 'lightning'],
+};
+var levelAmount = {
+    1: [2, 4, 6],
+    2: [4, 4, 1, 1]
+}
 
+
+// current player stats
 var player0 = new Character(100, 0);
 var fallingObjectArray = [];
 
 // fill the array
-setFallingObjects(1);
+setFallingObjects(2);
+console.log(fallingObjectArray);
+
+
+// takes in an array of sprites in contact and apply points
+function updateStatsAfterContact(player, contactingObjects) {
+    // if in contact give me the sprite type
+    for (var i = 0; i < contactingObjects.length; i++) {
+        player.contact(contactingObjects[i]);
+        
+        // log out player stats
+        console.log("PLAYER HEALTH:", player.health);
+        console.log("PLAYER POINTS:", player.points);
+    }   
+}
+
+
+
+
+
