@@ -2,3 +2,49 @@ canvas {
     border: 1px solid black;
     background-color: gray;
 }
+
+/* css for main page */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Monoton', cursive;
+    font-family: 'Orbitron', sans-serif;
+    font-family: 'Jura', sans-serif;
+
+}
+
+#mainHeader{
+    
+    background-color:#b3daff;
+    color: white;
+    text-shadow: 3px 4px 5px black;
+    text-align: center;
+    font-family: 'Monoton', cursive;
+    font-size: 90px;
+
+
+}
+.inner-container{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    /* margin-bottom: 20px; */
+    background-image: linear-gradient(#b3daff 35%, #e6f3ff, rgb(19, 92, 19));
+}
+
+.game{
+    padding-bottom: 30%;
+    border: 2px solid black;
+    background-color: red;
+}
+
+#info-container{
+    width: 100%;
+    padding-bottom: 30%;
+    /* border: 2px solid black; */
+    background-color: rgb(19, 92, 19);
+}
