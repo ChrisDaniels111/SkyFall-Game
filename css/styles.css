@@ -49,7 +49,26 @@ body{
 
 #info-container{
     width: 100%;
-    padding-bottom: 30%;
-    /* border: 2px solid black; */
+    padding-bottom: 20%;
     background-color: rgb(19, 92, 19);
+}
+
+.info-container-inner{
+    width: 80%;
+    padding-top: 1%;
+    margin: 0 auto;
+    border: 2px solid black;
+   
+}
+.game-key{
+   
+    border: 2px solid black;
+}
+
+.instructions{
+    border: 2px solid black;
+
+}
+.score-card{
+    border: 2px solid black;
 }
