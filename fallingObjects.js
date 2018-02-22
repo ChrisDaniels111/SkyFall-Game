@@ -115,23 +115,7 @@ $(document).ready(function () {
 
     //////////////////// ENTER USERNAME  /////////////////////
 
-    // var input = $('#usernameInput');
-
-    // var userTextInput = function() {
-    //     return $('#usernameInput')
-    // };
-
-    // var usernameInput = userTextInput();
-
-
-    // $("#button").onclick = startGame()
-      
-
-
-    // click(startGame)
-
-    // $(".inner-info-box").append(usernameInput);
-
+    
 
 
     $('#start-button').click(function() {
