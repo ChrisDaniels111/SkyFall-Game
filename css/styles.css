@@ -112,7 +112,7 @@ body{
 /* //////////////////////////////////////////////// */
 .start-menu{
     margin: 50px auto;
-    border: 3px solid black;
+    /* border: 3px solid black; */
 }
 
 .start-button{
