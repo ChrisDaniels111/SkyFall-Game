@@ -40,11 +40,12 @@ body{
     margin: 0 auto;
     background-image: linear-gradient(#b3daff 35%, #e6f3ff, rgb(19, 92, 19));
 }
+.row{
+    width: 100% !important;
+}
 
 .game{
-    padding-bottom: 30%;
-    border: 2px solid black;
-    background-color: red;
+       align-content: center;
 }
 
 #info-container{
@@ -72,11 +73,11 @@ body{
     font-family: 'Jura', sans-serif;
     border: 3px solid black;
     border-radius: 10px;
-    padding: 2%;
+    padding: 2% ;
     margin: 15px;
     background-color: rgb(189, 152, 72);
     box-shadow: 1px 6px 7px rgba(43, 34, 16, 0.623);
-
+  
 }
  
 .info-box-header{
@@ -123,5 +124,7 @@ body{
 }
 #usernameInput{
     color: black;
+    border-radius: 0 40px 20px 20px;
+    box-shadow: 1px 4px 5px #44251eb0;
 }
 

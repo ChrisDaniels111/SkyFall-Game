@@ -22,8 +22,10 @@ $('document').ready(function() {
 
 // ******************** Game Variables **********************
 
-var myGamePiece;
-var fallingSprites = [];            
+var myGamePiece,
+    myScore,
+    myBackground;
+var fallingSprites = [];                                // contains all the falling sprite objects on screen         
 var colorDictionary = {
     cloud: './images/boo.png',
     sun: './images/fire.png',
@@ -52,8 +54,8 @@ class Component {
         this.color = color;
         this.x = x;
         this.y = y; 
-        
         this.fileType = fileType;
+        
         if (fileType == 'image') {
             this.image = new Image();
             this.image.src = color;
@@ -64,6 +66,10 @@ class Component {
         var ctx = myGameArea.context;
         if (this.fileType == 'image') {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        } else if (this.fileType == 'text') {
+            ctx.font = `${this.width} ${this.height}`;
+            ctx.fillStyle = this.color;
+            ctx.fillText(this.text, this.x, this.y);                                // this.text gets instantiated when you create a text Component
         } else {
             ctx.fillStyle = this.color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -76,7 +82,10 @@ class Component {
 }
 
 function startGame() {
-    myGamePiece = new Component(75, 75, "./images/bulbasaur.png", 205, 195, 'image');
+    myBackground = new Component(480, 270, './images/background.png', 0, 0, 'image');
+    myGamePiece = new Component(75, 75, "./images/bulbasaur.png", 205, 175, 'image');
+    myScore = new Component('50px', 'Press Start 2P', 'black', 300, 40, 'text');
+
     myGameArea.start();
 }
 
@@ -128,8 +137,6 @@ function updateGameArea() {
 
     } else {
 
-        
-
         // regular game play
         myGameArea.clear();
         myGamePiece.speedX = 0;         // stops it from increasing base speed
@@ -142,6 +149,14 @@ function updateGameArea() {
         if (myGameArea.key && myGameArea.key == 39 && !onRightWall()) {
             moveright();
         }
+
+        // background insertion
+        myBackground.newPos();
+        myBackground.update();
+
+        // update the text of player points
+        myScore.text = `SCORE: ${player0.points} HEALTH: ${player0.health}`;
+        myScore.update();
 
         // updates the position of all sprites (removes some) each frame update
         myGamePiece.newPos();
@@ -215,12 +230,11 @@ function updateSprites() {
 function makeSprites() {
     for (var i = 0; i < fallingObjectArray.length; i++) {
         var fallObject = fallingObjectArray[i];
-        var color;
+        var img;
 
-        color = spriteColor(fallObject);
-        // console.log(color);
+        img = spriteIMG(fallObject);
 
-        var newSprite = new Component(20, 20, color, randomX(), randomY(), 'image');
+        var newSprite = new Component(20, 20, img, randomX(), randomY(), 'image');
         
         // add tracker to sprite type in data
         // add unique data ability to points/health
@@ -244,13 +258,13 @@ function makeSprites() {
 
 
 function randomX() {
-    return Math.floor(Math.random() * 471);         // return x value between 0 and 470
+    return Math.floor(Math.random() * 471);                         // return x value between 0 and 470
 }
 function randomY() {
-    return - (Math.floor(Math.random() * 30) + 10); // start right outside canvas; between -10 and -30
+    return - (Math.floor(Math.random() * 30) + 10);                 // start right outside canvas; between -10 and -30
 }
 function speedSelector() {
-    return (Math.random() * 2) + 0.1;               // create a speed selector based on levels
+    return levelSpeed[level];               // create a speed selector based on levels
 }
 
 function inBetween(num1, num2, widthHeight) {
@@ -278,7 +292,7 @@ function inContact(characterSprite, fallingSprite) {
 }
 
 // helper function to help decide color based on type
-function spriteColor(fallingObject) {
+function spriteIMG(fallingObject) {
     return colorDictionary[fallingObject.type];
 }
 
