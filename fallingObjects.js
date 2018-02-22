@@ -114,26 +114,22 @@ $(document).ready(function () {
 
 
 
-    //////////////////// ENTER HIGHSCORE PROMPT /////////////////////
+    //////////////////// ENTER USERNAME  /////////////////////
+
+    // var input = $('#usernameInput');
+
+    // var userTextInput = function() {
+    //     return $('#usernameInput')
+    // };
+
+    // var usernameInput = userTextInput();
 
 
-    //////// PROMPT SCORE CARD INPUT /////////////////////////
-                                                        
-    var usernamePrompt = function () {
-        return prompt("!!ENTER USERNAME!!", "STICKMAN :)");
-    };
+    // $("#button").addEventListener(function(){
+    //     $(".inner-info-box").append(usernameInput)
+    // })
 
-    var userPromptInput = usernamePrompt();
-
-    $(".").append(userPromptInput);
-
-    ////////////////////////////////////////////////////////
-
-
-
-
-
-
+    // $(".inner-info-box").append(usernameInput)
 
     ////////////////////////////    END    ///////////////////////////
 
