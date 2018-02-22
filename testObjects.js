@@ -53,8 +53,8 @@ var fallingObjectData = {                           // holds the stats for diffe
 // keys have to be entered via [] notation
 var levelData = {
     1: ['dollar1', 'dollar5', 'dollar10'],
-    2: ['healthBall', 'cloud', 'sun', 'lightning'],
-    3: ['cloud', 'sun', 'lightning'],
+    2: ['healthBall', 'dollar5', 'sun', 'lightning'],
+    3: ['cloud', 'dollar10', 'lightning'],
     4: ['dollar1', 'dollar5', 'dollar10'],
     5: ['dollar1', 'dollar5', 'dollar10'],
     6: ['dollar1', 'dollar5', 'dollar10'],
@@ -68,6 +68,15 @@ var levelAmount = {
     5: [2, 3, 2],
     6: [2, 3, 2],
 };
+
+var levelSpeed = {
+    1: 2,
+    2: 3,
+    3: 4,
+    4: 5,
+    5: 6,
+    6: 7
+}
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////

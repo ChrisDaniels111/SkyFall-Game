@@ -22,8 +22,9 @@ $('document').ready(function() {
 
 // ******************** Game Variables **********************
 
-var myGamePiece;
-var myScore;
+var myGamePiece,
+    myScore,
+    myBackground;
 var fallingSprites = [];                                // contains all the falling sprite objects on screen         
 var colorDictionary = {
     cloud: './images/boo.png',
@@ -81,7 +82,8 @@ class Component {
 }
 
 function startGame() {
-    myGamePiece = new Component(75, 75, "./images/bulbasaur.png", 205, 195, 'image');
+    myBackground = new Component(480, 270, './images/background.png', 0, 0, 'image');
+    myGamePiece = new Component(75, 75, "./images/bulbasaur.png", 205, 175, 'image');
     myScore = new Component('50px', 'Press Start 2P', 'black', 300, 40, 'text');
 
     myGameArea.start();
@@ -147,6 +149,10 @@ function updateGameArea() {
         if (myGameArea.key && myGameArea.key == 39 && !onRightWall()) {
             moveright();
         }
+
+        // background insertion
+        myBackground.newPos();
+        myBackground.update();
 
         // update the text of player points
         myScore.text = `SCORE: ${player0.points} HEALTH: ${player0.health}`;
@@ -253,13 +259,13 @@ function makeSprites() {
 
 
 function randomX() {
-    return Math.floor(Math.random() * 471);         // return x value between 0 and 470
+    return Math.floor(Math.random() * 471);                         // return x value between 0 and 470
 }
 function randomY() {
-    return - (Math.floor(Math.random() * 30) + 10); // start right outside canvas; between -10 and -30
+    return - (Math.floor(Math.random() * 30) + 10);                 // start right outside canvas; between -10 and -30
 }
 function speedSelector() {
-    return (Math.random() * 2) + 0.1;               // create a speed selector based on levels
+    return levelSpeed[level];               // create a speed selector based on levels
 }
 
 function inBetween(num1, num2, widthHeight) {
