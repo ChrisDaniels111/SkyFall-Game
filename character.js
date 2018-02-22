@@ -39,8 +39,8 @@ var gameOver = function (stickMan) {
         console.log("game over");
     }
     else if (stickMan.points >= 100) {
-        // alert("you win");
-        var usernamePrompt = prompt("!!ENTER USERNAME!!", "STICKMAN :)");
+        // // alert("you win");
+        var usernamePrompt = prompt("!!ENTER USERNAME!!");
 
         var scorePrompt = prompt("!!ENTER SCORE!!", "000");
 
