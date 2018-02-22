@@ -33,6 +33,13 @@ var player0 = new Character(100, 0);
 var fallingObjectArray = [];                        // holds the falling objects that are in play
 var level = 1;                                      // starting level
 
+// score data
+var username = 'Patrick'; // will get it from input
+var arrayOfPlayers = [
+    {username: 'Amber', score: 100},
+    {username: 'Chris', score: 50},
+];
+
 var fallingObjectData = {                           // holds the stats for different objects
     cloud: ['cloud', 0, -1],
     sun: ['sun', -1, -3],
@@ -52,15 +59,15 @@ var levelData = {
     1: ['dollar1', 'dollar5', 'dollar10'],
     2: ['healthBall', 'dollar5', 'sun', 'lightning'],
     3: ['cloud', 'dollar10', 'lightning'],
-    4: ['dollar1', 'dollar5', 'dollar10'],
-    5: ['dollar1', 'dollar5', 'dollar10'],
-    6: ['dollar1', 'dollar5', 'dollar10'],
+    4: ['cloud', 'dollar5', 'lightning'],
+    5: ['cloud', 'dollar5', 'lightning'],
+    6: ['cloud', 'dollar5', 'lightning'],
 };
 
 var levelAmount = {
     1: [1, 1, 1],
     2: [1, 1, 1, 1],
-    3: [2, 3, 2],
+    3: [4, 3, 4],
     4: [2, 3, 2],
     5: [2, 3, 2],
     6: [2, 3, 2],

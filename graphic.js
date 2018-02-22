@@ -128,6 +128,9 @@ function updateGameArea() {
     if (player0.gameover()) {
 
         myGameArea.stop();
+        addPlayerGameData();        // display high score
+        appendEndScoreToPage();
+       
         alert(`Gameover! Your score was ${player0.points}!`);
         // add visual animation and append username/score to div
 
