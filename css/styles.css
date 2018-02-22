@@ -32,6 +32,7 @@ body{
     text-align: center;
     font-family: 'Monoton', cursive;
     font-size: 90px;
+    margin-top:-15px;
 
 
 }
@@ -129,3 +130,6 @@ body{
     box-shadow: 1px 4px 5px #44251eb0;
 }
 
+#pokemon{
+    margin-left:140px;
+}

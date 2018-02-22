@@ -115,18 +115,38 @@ $(document).ready(function () {
 
     //////////////////// ENTER USERNAME  /////////////////////
 
-    
+    $("#characterSelect").hide()
+
 
 
     $('#start-button').click(function() {
-        $('.start-menu').remove();
-        $('document').ready(function() {
-            startGame();
-        
-        });
+
+        $('.user-input').remove();
+        $("#characterSelect").show()
+
+        // $('#characterSelect').click(function(){
+
+        //     // $('#characterSelect').remove();
+        //     $('document').ready(function() {
+        //         startGame();
+            
+        //     });
+        // });
     });
 
     
+
+        // $('document').ready(function() {
+   
+           
+        //     $("#startButton").click(function() {
+        //         $(".start-menu").remove()
+        //         $("#characterSelect").show()
+        //     })
+        // })
+
+
+
 
     ////////////////////////////    END    ///////////////////////////
 
