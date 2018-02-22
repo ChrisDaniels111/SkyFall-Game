@@ -135,8 +135,6 @@ function updateGameArea() {
 
     } else {
 
-        
-
         // regular game play
         myGameArea.clear();
         myGamePiece.speedX = 0;         // stops it from increasing base speed
@@ -151,8 +149,9 @@ function updateGameArea() {
         }
 
         // update the text of player points
-        myScore.text = "SCORE: " + player0.points + "\nHEALTH: " + player0.health;
+        myScore.text = `SCORE: ${player0.points} HEALTH: ${player0.health}`;
         myScore.update();
+
         // updates the position of all sprites (removes some) each frame update
         myGamePiece.newPos();
         myGamePiece.update();
