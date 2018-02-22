@@ -70,6 +70,7 @@ function createPokemonInputBox() {
     var $span = $("<span>", {"class": "input-group-btn"});
     var $button = $("<button>", {"class": "btn btn-primary", "type": "button", "text": "Go!"});
 
+    // click event brings up pokemon img and pokemon types
     $button.click(getPokemonIMG)
 
     $span.append($button);
