@@ -84,7 +84,7 @@ class Component {
 function startGame() {
     myBackground = new Component(480, 270, './images/background.png', 0, 0, 'image');
     myGamePiece = new Component(75, 75, "./images/bulbasaur.png", 205, 175, 'image');
-    myScore = new Component('50px', 'Press Start 2P', 'black', 300, 40, 'text');
+    myScore = new Component('15px', 'arial', 'black', 250, 40, 'text');
 
     myGameArea.start();
 }
@@ -125,15 +125,14 @@ var myGameArea = {
 function updateGameArea() {
     // call data from testObject.js
     // gameover check
-    if (player0.gameover() && !player0.won()) {
+    if (player0.gameover()) {
 
         myGameArea.stop();
-        alert("Gameover! You lost!");
-
-    } else if (player0.gameover() && player0.won()) {
-
-        myGameArea.stop();
-        alert(`You Won! Your score was ${player0.points}`);
+        addPlayerGameData();        // display high score
+        appendEndScoreToPage();
+       
+        alert(`Gameover! Your score was ${player0.points}!`);
+        // add visual animation and append username/score to div
 
     } else {
 

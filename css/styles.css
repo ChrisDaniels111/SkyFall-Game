@@ -8,9 +8,10 @@
 
 /* game css */
 canvas {
-    border: 1px solid black;
+    border: 2px solid black;
     background-color: gray;
 }
+
 /* end of game css */
 
 
