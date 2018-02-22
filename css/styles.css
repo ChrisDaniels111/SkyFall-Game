@@ -106,7 +106,7 @@ body{
     
 
 .score-card{
-    border: 2px solid black;
+    border-radius: 0 40px 20px 20px;
 }
 
 .start-menu{
