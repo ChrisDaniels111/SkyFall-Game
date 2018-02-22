@@ -12,10 +12,7 @@ class Character {
         this.points += fallingObject.points;
     }
     gameover() {
-        return (this.health <= 0 || this.points >= 100); 
-    }
-    won() {
-        return this.points >= 100;
+        return (this.health <= 0); 
     }
 }
 
