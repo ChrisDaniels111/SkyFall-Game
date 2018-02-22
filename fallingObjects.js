@@ -124,6 +124,11 @@ $(document).ready(function () {
         $('.user-input').remove();
         $("#characterSelect").show()
 
+        
+    });
+
+    $('#pokemon').
+
         // $('#characterSelect').click(function(){
 
         //     // $('#characterSelect').remove();
@@ -132,18 +137,6 @@ $(document).ready(function () {
             
         //     });
         // });
-    });
-
-    
-
-        // $('document').ready(function() {
-   
-           
-        //     $("#startButton").click(function() {
-        //         $(".start-menu").remove()
-        //         $("#characterSelect").show()
-        //     })
-        // })
 
 
 

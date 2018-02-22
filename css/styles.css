@@ -117,6 +117,7 @@ body{
 }
 
 #start-button{
+    margin-left: 90px;
     border-radius: 0 40px 20px 20px;
     /* box-shadow: 1px 4px 5px #44251eb0; */
 }
@@ -133,4 +134,5 @@ body{
 
 #pokemon{
     margin-left:140px;
+    color: black;
 }
