@@ -111,18 +111,17 @@ body{
 
 .start-menu{
     margin: 50px auto;
-    border: 3px solid black;
+    /* border: 3px solid black; */
 }
 
 .start-button{
     border-radius: 0 40px 20px 20px;
-    box-shadow: 1px 4px 5px #44251eb0;
+    margin-left: 110px;
 }
 
 .user-input{
     margin-bottom: 10px;
-    margin-left: 450px;
-    font-size: 20px;
+    font-size: 17px;
 }
 #usernameInput{
     color: black;
