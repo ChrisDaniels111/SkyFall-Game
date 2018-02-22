@@ -11,7 +11,6 @@
 // 1. Build a FallingObject class with attributes: {type, damage, points, etc}
 // 
 $(document).ready(function () {
-    console.log('Page Loaded :)');
 
     var fallingObjectsArray = [];
     // var usernameArray = [];
@@ -125,11 +124,22 @@ $(document).ready(function () {
     // var usernameInput = userTextInput();
 
 
-    // $("#button").addEventListener(function(){
-    //     $(".inner-info-box").append(usernameInput)
-    // })
+    // $("#button").onclick = startGame()
+      
 
-    // $(".inner-info-box").append(usernameInput)
+
+    // click(startGame)
+
+    // $(".inner-info-box").append(usernameInput);
+
+
+
+    $('#start-button').click(function() {
+        $('.start-menu').remove();
+        
+    });
+
+
 
     ////////////////////////////    END    ///////////////////////////
 

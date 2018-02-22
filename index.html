@@ -29,9 +29,8 @@
         <!--this container will hold SkyFall game-->
         <div class="inner-container">
             <div class="row">
-                <div class="col-md-4 col-md-offset-4 game"></div>
+                <div class="col-md-4 col-md-offset-4" id="game">
 
-                    this is where the game will go
                     <!-- Start button and username input @@ -->
                     <div class="start-menu">
                         <div class="user-input">
@@ -44,8 +43,8 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="start-button">
-                            <button type="submit" class="btn btn-success btn-lg btn-block">START GAME</button>
+                        <div id="start-button">
+                            <button type="submit" class="btn btn-success btn-lg btn-block" >START GAME</button>
                         </div>
                     </div>
                     <!-- END @@ -->
@@ -121,13 +120,13 @@
 
 
     <!-- Graphic Module -->
-    <script src="testObjects.js"></script>
-    <script src="graphic.js"></script>
+    <script src="./testObjects.js"></script>
+    <script src="./graphic.js"  ></script>
 
     <!-- Character Module -->
     <!-- <script src="character.js"></script> -->
     <!-- FallingObject Module -->
-    <!-- <script src="fallingObjects.js"></script> -->
+    <script src="./fallingObjects.js"></script>
 </body>
 
 </html>
