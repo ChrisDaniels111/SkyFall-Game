@@ -110,6 +110,7 @@ body{
     border-radius: 0 40px 20px 20px;
 }
 
+/* //////////////////////////////////////////////// */
 .start-menu{
     margin: 50px auto;
     /* border: 3px solid black; */
@@ -117,7 +118,7 @@ body{
 
 #start-button{
     border-radius: 0 40px 20px 20px;
-    margin-left: 110px;
+    /* box-shadow: 1px 4px 5px #44251eb0; */
 }
 
 .user-input{
