@@ -106,22 +106,23 @@ body{
     
 
 .score-card{
-    border: 2px solid black;
-}
-
-.start-menu{
-    margin: 150px 60px -50px 60px;
-}
-
-.start-button{
     border-radius: 0 40px 20px 20px;
-    box-shadow: 1px 4px 5px #44251eb0;
+}
+
+/* //////////////////////////////////////////////// */
+.start-menu{
+    margin: 50px auto;
+    /* border: 3px solid black; */
+}
+
+#start-button{
+    border-radius: 0 40px 20px 20px;
+    /* box-shadow: 1px 4px 5px #44251eb0; */
 }
 
 .user-input{
     margin-bottom: 10px;
-    margin-left: 65px;
-    font-size: 20px;
+    font-size: 17px;
 }
 #usernameInput{
     color: black;

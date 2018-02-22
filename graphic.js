@@ -8,11 +8,10 @@
 
 
 
-$('document').ready(function() {
-    createPokemonInputBox();
-    startGame();
+// $('document').ready(function() {
+//     startGame();
 
-});
+// });
 
 
 
