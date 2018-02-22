@@ -86,6 +86,6 @@ function createPokemonInputBox() {
 
     $("#pokemon").append($label);
     $("#pokemon").append($div);
-}
+};
 
 createPokemonInputBox();

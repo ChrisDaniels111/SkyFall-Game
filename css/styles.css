@@ -21,20 +21,18 @@ body{
     font-family: 'Monoton', cursive;
     font-family: 'Orbitron', sans-serif;
     font-family: 'Jura', sans-serif;
-
+    background-color:#b3daff;
 }
 
 #mainHeader{
     
-    background-color:#b3daff;
+    background-color:#b3daff; background-color:#b3daff;
     color: white;
     text-shadow: 3px 4px 5px black;
     text-align: center;
     font-family: 'Monoton', cursive;
     font-size: 90px;
-
-
-}
+ }
 .inner-container{
     width: 100%;
     height: 100%;
@@ -116,7 +114,9 @@ body{
 }
 
 #start-button{
+    margin-left: 90px;
     border-radius: 0 40px 20px 20px;
+    margin-left: 110px;
     /* box-shadow: 1px 4px 5px #44251eb0; */
 }
 
@@ -130,3 +130,7 @@ body{
     box-shadow: 1px 4px 5px #44251eb0;
 }
 
+#pokemon{
+    margin-left:140px;
+    color: black;
+}
