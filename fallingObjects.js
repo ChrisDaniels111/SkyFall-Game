@@ -136,6 +136,11 @@ $(document).ready(function () {
 
     $('#start-button').click(function() {
         $('.start-menu').remove();
+        $('document').ready(function() {
+            startGame();
+        
+        });
+        
         
     });
 

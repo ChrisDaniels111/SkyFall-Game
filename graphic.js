@@ -8,10 +8,10 @@
 
 
 
-$('document').ready(function() {
-    startGame();
+// $('document').ready(function() {
+//     startGame();
 
-});
+// });
 
 
 
