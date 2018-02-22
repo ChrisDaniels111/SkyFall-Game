@@ -120,16 +120,13 @@ $(document).ready(function () {
 
 
     $('#start-button').click(function() {
-
         $('.user-input').remove();
         $("#characterSelect").show()
 
         
     });
 
-    $('#pokemon').
-
-        // $('#characterSelect').click(function(){
+          // $('#characterSelect').click(function(){
 
         //     // $('#characterSelect').remove();
         //     $('document').ready(function() {

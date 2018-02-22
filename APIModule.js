@@ -23,13 +23,17 @@ function getPokemonIMG() {
     })
     .done(function(response) {
         var pokemonData = response;
-
+        var $button = $("<button>", {"class": "btn btn-success", "type": "button", "text": "start!", "id":"start-game"});
         pokemonFront = `<img src="https://pokeapi.co/media/sprites/pokemon/${pokemonData.id}.png" id="pokemonFrontPage">`;
 
-
+        $button.click(function() {
+            $("#pokemon").empty();
+            startGame();
+        });
         $("#pokemon").empty(); // clear div
         $("#pokemon").append(pokemonFront);
         $("#pokemon").append(listPokemonType(pokemonData));
+        $("#pokemon").append($button);
         
     });
 }
@@ -69,6 +73,8 @@ function createPokemonInputBox() {
                    "placeholder": "Search for a pokemon..."});
     var $span = $("<span>", {"class": "input-group-btn"});
     var $button = $("<button>", {"class": "btn btn-primary", "type": "button", "text": "Go!"});
+
+    
 
     // click event brings up pokemon img and pokemon types
     $button.click(getPokemonIMG)
