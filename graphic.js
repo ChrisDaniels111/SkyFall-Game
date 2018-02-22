@@ -150,8 +150,7 @@ function updateGameArea() {
         if (myGameArea.key && myGameArea.key == 39 && !onRightWall()) {
             moveright();
         }
-        if (canSpecialMove()) {
-        }
+        
 
         // background insertion
         myBackground.newPos();
@@ -167,7 +166,7 @@ function updateGameArea() {
         updateGameLevel();              // adjusts level based on points; in testObjects.js
         updateSprites();
 
-        if (usedSpecialMove) {
+        if (!buttonExist) {
             updateSpecialMove();
         }
     }
@@ -253,7 +252,7 @@ function makeSprites() {
     }
     setFallingObjects(level);               // calls testObjects.js and changes the fallingObjectArray loadout
     console.log('level', level);
-    console.log("fallingSprites", fallingSprites);
+    
 }
 
 
