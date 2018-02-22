@@ -230,12 +230,11 @@ function updateSprites() {
 function makeSprites() {
     for (var i = 0; i < fallingObjectArray.length; i++) {
         var fallObject = fallingObjectArray[i];
-        var color;
+        var img;
 
-        color = spriteColor(fallObject);
-        // console.log(color);
+        img = spriteIMG(fallObject);
 
-        var newSprite = new Component(20, 20, color, randomX(), randomY(), 'image');
+        var newSprite = new Component(20, 20, img, randomX(), randomY(), 'image');
         
         // add tracker to sprite type in data
         // add unique data ability to points/health
@@ -293,7 +292,7 @@ function inContact(characterSprite, fallingSprite) {
 }
 
 // helper function to help decide color based on type
-function spriteColor(fallingObject) {
+function spriteIMG(fallingObject) {
     return colorDictionary[fallingObject.type];
 }
 
