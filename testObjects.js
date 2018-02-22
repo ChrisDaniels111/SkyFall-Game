@@ -74,12 +74,12 @@ var levelAmount = {
 };
 
 var levelSpeed = {
-    1: 2,
-    2: 3,
-    3: 4,
-    4: 5,
-    5: 6,
-    6: 7
+    1: 0.5,
+    2: 1,
+    3: 1.5,
+    4: 2,
+    5: 3,
+    6: 3.5
 }
 
 /////////////////////////////////////////////////
@@ -116,15 +116,15 @@ function updateStatsAfterContact(player, contactingObjects) {
 
 function updateGameLevel() {
     var points = player0.points;
-    if (points >= 20 && points < 35 && level == 1) {
+    if (points >= 300 && points < 500 && level == 1) {
         level++;                         // only allow level to incrememnt up
-    } else if (points >= 35 && points < 50 && level == 2) {
+    } else if (points >= 500 && points < 700 && level == 2) {
         level++;
-    } else if (points >= 50 && points < 65 && level == 3) {
+    } else if (points >= 700 && points < 900 && level == 3) {
         level++;
-    } else if (points >= 65 && points < 80 && level == 4) {
+    } else if (points >= 1100 && points < 1300 && level == 4) {
         level++;
-    } else if (points >= 80 && level == 5) {
+    } else if (points >= 1300 && level == 5) {
         level++;
     } 
 }

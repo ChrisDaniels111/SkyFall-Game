@@ -9,6 +9,7 @@
 
 
 $('document').ready(function() {
+    createPokemonInputBox();
     startGame();
 
 });
@@ -82,8 +83,10 @@ class Component {
 }
 
 function startGame() {
+    
+    var imgpokemon = "https://pokeapi.co/media/sprites/pokemon/120.png"
     myBackground = new Component(480, 270, './images/background.png', 0, 0, 'image');
-    myGamePiece = new Component(75, 75, "./images/bulbasaur.png", 205, 175, 'image');
+    myGamePiece = new Component(75, 75, imgpokemon, 205, 175, 'image');
     myScore = new Component('15px', 'arial', 'black', 250, 40, 'text');
 
     myGameArea.start();
@@ -101,7 +104,7 @@ var myGameArea = {
 
         // interval of updating character sprite and falling sprites
         this.interval = setInterval(updateGameArea, 20);
-        this.spriteInterval = setInterval(makeSprites, 1000);
+        this.spriteInterval = setInterval(makeSprites, 1500);
 
         // keyboard event listeners
         $('body').on('keydown', function(e) {
@@ -148,6 +151,8 @@ function updateGameArea() {
         if (myGameArea.key && myGameArea.key == 39 && !onRightWall()) {
             moveright();
         }
+        if (canSpecialMove()) {
+        }
 
         // background insertion
         myBackground.newPos();
@@ -162,6 +167,10 @@ function updateGameArea() {
         myGamePiece.update();
         updateGameLevel();              // adjusts level based on points; in testObjects.js
         updateSprites();
+
+        if (usedSpecialMove) {
+            updateSpecialMove();
+        }
     }
 }
 
@@ -260,7 +269,7 @@ function randomX() {
     return Math.floor(Math.random() * 471);                         // return x value between 0 and 470
 }
 function randomY() {
-    return - (Math.floor(Math.random() * 30) + 10);                 // start right outside canvas; between -10 and -30
+    return - (Math.floor(Math.random() * 100) + 10);                 // start right outside canvas; between -10 and -50
 }
 function speedSelector() {
     return levelSpeed[level];               // create a speed selector based on levels
@@ -287,7 +296,7 @@ function inContact(characterSprite, fallingSprite) {
         inBetween(playerY, fallY, playerH)) {
         return true;
     } 
-    
+    return false;
 }
 
 // helper function to help decide color based on type
