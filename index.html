@@ -46,23 +46,14 @@
                                 <button type="submit" class="btn btn-success btn-lg">START GAME</button>
                             </div>
                         </div>
-
                         <div id="characterSelect">
-                                <div id="pokemon">
+                            <div id="pokemon">
 
-                                    </div>
+                            </div>
                         </div>
-                        
+
                     </div>
 
-                    <!-- END @@ -->
-                    <!-- <div id="characterSelect">
-                        <div id="pokemon">
-                                <!-- <button type="submit" class="btn btn-success btn-lg">START GAME</button> -->
-                     
-                        <!-- </div> -->
-                    <!-- </div> -->
-                    <!-- END @@ -->
                 </div>
             </div>
         </div>
@@ -75,12 +66,66 @@
             <!-- gamekey -->
 
             <div class="game-key col-md-4 info-box-style ">
-                <h4 class="info-box-header">ITEM KEY</h4>
+                <h4 class="info-box-header">ITEM-KEY</h4>
                 <div class="row">
-                    <div class="inner-info-box"> this is another test 1
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit incidunt quo sint optio ab
-                            aliquam, id fugiat ipsam ea aspernatur adipisci, earum veritatis magni dolores, dolorem exercitationem
-                            voluptatum! Facilis, perspiciatis?</p>
+                    <div class="inner-info-box">
+                            <form class="form-horizontal">
+                                    <div class=" form-group">
+                                        <div class="col-sm-10" id="falling-objects">
+                                            <div class="keyImages">
+                                                <img src="./images/berry2.png" alt="Berry Image">
+                                            </div>
+                                            <div>
+                                                <label for="Berry" id="berry"><h3>BERRY</h3>  Health: 10</label>
+                                            </div>
+                                
+                                        </div>
+                                    </div>
+                                    <div class=" form-group">
+                                        <div class="col-sm-10" id="falling-objects">
+                                            <div class="keyImages">
+                                                <img src="./images/angel2.png" alt="Angel Image">
+                                            </div>
+                                            <div>
+                                                <label for="Angel" id="angel"><h3>ANGEL</h3>  Health: 5</label>
+                                            </div>
+                                
+                                        </div>
+                                    </div>
+                                    <div class=" form-group">
+                                        <div class="col-sm-10" id="falling-objects">
+                                            <div class="keyImages">
+                                                <img src="./images/coin2.png" alt="Coin Image">
+                                            </div>
+                                            <div>
+                                                <label for="Coins" id="coins"><h3>COINS</h3>  Points: 5 to 10</label>
+                                            </div>
+                                
+                                        </div>
+                                    </div>
+                                    <div class=" form-group">
+                                        <div class="col-sm-10" id="falling-objects">
+                                            <div class="keyImages">
+                                                <img src="./images/lightning2.png" alt="Lightning Image">
+                                            </div>
+                                            <div>
+                                                <label for="Lightning" id="lightning"><h3>LIGHTNING</h3>  Points: -5</label>
+                                            </div>
+                                
+                                        </div>
+                                    </div>
+                                    <div class=" form-group">
+                                        <div class="col-sm-10" id="falling-objects">
+                                            <div class="keyImages">
+                                                <img src="./images/fire.png" alt="Fire Image">
+                                            </div>
+                                            <div>
+                                                <label for="Fire" id="fire"><h3>FIRE</h3>  Health: -15</label>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </form>
                     </div>
                 </div>
             </div>
@@ -92,11 +137,12 @@
                 <h4 class="info-box-header">HOW TO PLAY</h4>
                 <div class="row">
                     <div class="inner-info-box">
-                        <p>--Movement--</p>
-                        <p>The movement of the character is controled by the left and right arrow keys on your keyboard</p>
-                        <p>--How to win</p>
-                        <p>In order to win the game you must collect 100 points or more. If your health reaches 0 before you
-                            have collected at least 100 points the game is over.</p>
+                        <h3>--Movement--</h3>
+                        <p>The movement of the character is controlled by the left and right arrow keys on your keyboard.</p>
+                        <h3>--Objective--</h3>
+                        <p>The objective the game is to achieve the highest score you can before your health reaches 0. </p>
+                        <p>Please see item-key for the values of objects.</p>
+                        <h3>Good Luck!</h3>
                     </div>
                 </div>
             </div>
@@ -107,10 +153,7 @@
             <div class="score-card col-md-4 info-box-style ">
                 <h4 class="info-box-header">SCORE BOARD</h4>
                 <div class="row">
-                    <div class="inner-info-box" id='score-box'> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci dignissimos eum enim atque doloremque
-                        provident, exercitationem mollitia aperiam labore praesentium, laboriosam delectus voluptate illum
-                        quod laborum tenetur explicabo fuga laudantium!
-
+                    <div class="inner-info-box" id='score-box'>
                     </div>
                 </div>
             </div>
@@ -127,12 +170,6 @@
     <script src="graphic.js"></script>
     <script src="APIModule.js"></script>
 
-
-
-    <!-- Character Module -->
-    <!-- <script src="character.js"></script> -->
-    <!-- FallingObject Module -->
-    <!-- <script src="./fallingObjects.js"></script> -->
 </body>
 
 </html>

@@ -1,20 +1,13 @@
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-/* game css */
 canvas {
     border: 2px solid black;
     background-color: gray;
 }
-
-/* end of game css */
-
-
 
 body{
     color: white;
@@ -23,7 +16,12 @@ body{
     font-family: 'Jura', sans-serif;
     background-color:#b3daff;
 }
-
+h3{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    text-shadow: 3px 4px 10px black;
+   
+}
 #mainHeader{
     
     background-color:#b3daff; background-color:#b3daff;
@@ -70,6 +68,7 @@ body{
 
 .inner-info-box{
     font-family: 'Jura', sans-serif;
+    font-weight: bold;
     border: 3px solid black;
     border-radius: 10px;
     padding: 2% ;
@@ -82,7 +81,8 @@ body{
 .info-box-header{
     padding: 10px;
     margin-bottom: 3px;
-    font-size:20px;
+    font-family: 'Monoton', cursive;
+    font-size:35px;
     text-shadow: 2px 4px 5px black;
     border-radius: 50px;
     background-color: rgba(129, 71, 37, 0.404);
@@ -93,9 +93,7 @@ body{
 .game-key{
     border-radius: 40px 0 20px 20px;
     box-shadow: 1px 4px 5px #44251eb0;
-    
-}
-
+ }
 
 .instructions{
    border-radius: 0 0 15px 15px;
@@ -107,17 +105,15 @@ body{
     border-radius: 0 40px 20px 20px;
 }
 
-/* //////////////////////////////////////////////// */
 .start-menu{
     margin: 50px auto;
-    /* border: 3px solid black; */
+    padding-left: 90px;
 }
 
 #start-button{
-    margin-left: 90px;
-    border-radius: 0 40px 20px 20px;
     margin-left: 110px;
-    /* box-shadow: 1px 4px 5px #44251eb0; */
+    padding-top: 20px;    
+    border-radius: 0 40px 20px 20px;
 }
 
 .user-input{
@@ -137,4 +133,7 @@ body{
 
 #start-game{
     margin-left: 20px;
+}
+#falling-objects{
+    margin-left: 30px;
 }
