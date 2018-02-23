@@ -63,7 +63,6 @@ function createSpecialMoveButton() {
     $button.click(makeSpecialSprites);
     $('.game').append($button);
     buttonExist = true;
-    // myGameArea.key = 32
 }
 
 ///////////////////////////////////////////////////////////
