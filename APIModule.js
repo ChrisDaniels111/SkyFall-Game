@@ -50,6 +50,7 @@ function listPokemonType(pokemonData) {
         var typeName = types[i]['type']['name'];
         message += capitalizeFirstLetter(typeName) + ' ';
     }
+    pokemonType = message;
     return `<p>${message}</p>`;
 }
 

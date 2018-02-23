@@ -1,4 +1,3 @@
-// setup append end score to high score page
 
 
 // create individual div for each user name
@@ -27,12 +26,18 @@ function appendEndScoreToPage() {
 
 var specialMoveArray = [];
 var buttonExist;
-var specialTracker = 100;
+var specialMoveDict = {
+    grass: './images/grass2.png',
+    fire: './images/fire-special2.png',
+    default: './images/water2.png'
+}
+var specialMoveImg;
 
 function makeSpecialSprites() {
-    // make 20 sprites
-    for (var i = 0; i < 20; i++) {
-        var specialSprite = new Component(20, 20, './images/fire.png', 185, 300, 'image');
+    // make 25 sprites
+    typeImageSelector();        // gets the special based on type
+    for (var i = 0; i < 25; i++) {
+        var specialSprite = new Component(20, 20, specialMoveImg, 185, 300, 'image');
         specialMoveArray.push(specialSprite);
         console.log("HERE:", specialMoveArray);
     }
@@ -54,10 +59,31 @@ function updateSpecialMove() {
     specialMoveArray = specialMoveArray.filter(sprite => sprite.y >= 0);    // remove sprites out of box
 }
 
+function typeImageSelector() {
+    var found = false;
+    var getType = pokemonType.toLowerCase().split(' ');
+    getType.shift();        // remove 'Type:' text
+    
+    for (var i = 0; i < getType.length; i++) {
+        var key = getType[i];
+        console.log(key);
+        if (key in specialMoveDict && !found) {
+            specialMoveImg = specialMoveDict[key];
+            found = true;
+        } else if (!(key in specialMoveDict) && found) {
+            continue;
+        } else if (key in specialMoveDict && found) {
+            specialMoveImg = specialMoveDict[key];
+        } else {
+            specialMoveImg = specialMoveDict['default'];
+        }
+    }
+}
 
 ///////////////////////////////////////////////////////////
 /////////////// CALL THIS IN START BUTTON /////////////////
 ///////////////////////////////////////////////////////////
+
 function createSpecialMoveButton() {
     var $button = $("<button>", {"class": "btn btn-primary", "id": "special", "type": "button", "text": "Special Ready"});
     $button.click(makeSpecialSprites);
