@@ -197,6 +197,8 @@ function updateSpecialMove() {
 
 ### Append Username and Score at Gameover ###
 
+![Append Demo](/images/demo.png)
+
 ```javascript
 function addPlayerGameData() {
     var playerData = {};
