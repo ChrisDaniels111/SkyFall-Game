@@ -80,7 +80,7 @@ Component class is the template for all sprites. It was originally built to just
 
 
 ## Data Management ##
----
+
 
 ### Image File Management (graphicHelper.js, objects.js) ###
 ```javascript
@@ -194,7 +194,6 @@ function updateSpecialMove() {
 
 ---
 
-<br>
 
 ### Append Username and Score at Gameover ###
 
