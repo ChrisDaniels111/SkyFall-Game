@@ -68,7 +68,7 @@ class Component {
 ```
 Component class is the template for all sprites. It was originally built to just create blocks; hence parameter for color. 
 
-#### Functionality ###
+### Functionality ###
 * Draw sprite on canvas object
 * Redraw sprite in different position with each update call
 
@@ -80,7 +80,7 @@ Component class is the template for all sprites. It was originally built to just
 
 
 ## Data Management ##
----
+
 
 ### Image File Management (graphicHelper.js, objects.js) ###
 ```javascript
@@ -109,7 +109,12 @@ var imageDictionary = {
 ```
 <br>
 
+---
+
 ### Falling Sprites Management ###
+* Allows speed altering
+* Allows different sprites to fall per level
+* Unique Point structures 
 
 ```javascript
 var fallingObjectData = {     
@@ -151,4 +156,68 @@ var levelSpeed = {
     6: 2
 }
 ```
+<br>
+
+---
+
+### Special Move ###
+* Build 25 Sprites with image from API on pokemon type
+* These sprites are updated and removed if they make contact with falling sprites
+
+```javascript
+function makeSpecialSprites() {
+    // make 25 sprites
+    typeImageSelector();        // gets the special based on type
+    for (var i = 0; i < 25; i++) {
+        var specialSprite = new Component(20, 20, specialMoveImg, 185, 300, 'image');
+        specialMoveArray.push(specialSprite);
+    }
+    buttonExist = false;
+    $("#special").remove();
+}
+
+// run before updateSprites
+function updateSpecialMove() {
+    for (var i = 0; i < specialMoveArray.length; i++) {
+        specialMoveArray[i].speedX = specialSpeedX();
+        specialMoveArray[i].speedY = specialSpeedY();
+        specialMoveArray[i].update();
+        specialMoveArray[i].newPos();
+        
+        // delete falling sprites that are touching special move
+        fallingSprites = fallingSprites.filter(sprite => !inContact(specialMoveArray[i], sprite));
+    }
+    specialMoveArray = specialMoveArray.filter(sprite => sprite.y >= 0);    // remove sprites out of box
+}
+
+```
+
+---
+
+
+### Append Username and Score at Gameover ###
+
+```javascript
+function addPlayerGameData() {
+    var playerData = {};
+    playerData.username = username;
+    playerData.score = player0.points;
+    arrayOfPlayers.push(playerData);
+    arrayOfPlayers.sort((a, b) => a.score < b.score);
+}
+
+function appendEndScoreToPage() {
+    $("#score-box").empty();            // clear the current data
+    for (var i = 0; i < arrayOfPlayers.length; i++) {
+        var playerData = arrayOfPlayers[i];
+        var text = `${playerData.username} ${playerData.score}`
+        var $div = $("<div>", {"id": `score${i}`});
+        var $h3 = $("<h3>", {"text": text});
+        $div.append($h3);
+        $("#score-box").append($div);
+    }
+}
+```
+
 :smile:
+
