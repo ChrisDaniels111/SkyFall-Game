@@ -122,14 +122,10 @@ $(document).ready(function () {
         $('.user-input').remove();
         $("#characterSelect").show();
 
-<<<<<<< HEAD
         
     });
 
     // $('#pokemon').
-=======
-        // $('.input-group-btn').click(function(){
->>>>>>> 3ee113a14f641f5695b9c3b94593191f51ac1ec6
 
           // $('#characterSelect').click(function(){
 
@@ -138,7 +134,7 @@ $(document).ready(function () {
         //         startGame();
             
         //     });
-    });
+    // });
 
 
 
