@@ -10,6 +10,7 @@ $('document').ready(function() {
     $('#characterSelect').hide();
 
     $('#start-button').click(function() {
+        username = $('#usernameInput').val();       // assign end score username
         $('.user-input').remove();
         $("#characterSelect").show();
 
