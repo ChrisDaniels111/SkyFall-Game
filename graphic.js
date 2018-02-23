@@ -2,17 +2,24 @@
 // ***************** Graphic Module ************************
 // *********************************************************
 
-// Patrick Section
 
-// Build 
+////////////////////////////////////////////////////////////
+///////////////////// START SEQUENCE ///////////////////////
+////////////////////////////////////////////////////////////
+$('document').ready(function() {
+    $('#characterSelect').hide();
 
+    $('#start-button').click(function() {
+        $('.user-input').remove();
+        $("#characterSelect").show();
 
+    });
 
-// $('document').ready(function() {
-//     startGame();
+});
 
-// });
-
+// canvas gets drawn in line 32: APIModule.js; startGame()
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 
 
 ////////////////////////////////////////////////////////////
@@ -26,7 +33,7 @@ var myGamePiece,
     myScore,
     myBackground;
 var fallingSprites = [];                                // contains all the falling sprite objects on screen         
-var colorDictionary = {
+var imageDictionary = {
     cloud: './images/boo.png',
     sun: './images/fire.png',
     lightning: './images/bolt.png',
@@ -83,9 +90,10 @@ class Component {
 
 function startGame() {
     
-    var imgpokemon = "https://pokeapi.co/media/sprites/pokemon/120.png"
+    // gets pokemon image from APIModule.js
+    console.log(imagePokeURL);
     myBackground = new Component(480, 270, './images/background.png', 0, 0, 'image');
-    myGamePiece = new Component(75, 75, imgpokemon, 205, 175, 'image');
+    myGamePiece = new Component(75, 75, imagePokeURL, 205, 175, 'image');
     myScore = new Component('15px', 'arial', 'black', 250, 40, 'text');
 
     myGameArea.start();
@@ -151,7 +159,6 @@ function updateGameArea() {
             moveright();
         }
         
-
         // background insertion
         myBackground.newPos();
         myBackground.update();
@@ -299,7 +306,7 @@ function inContact(characterSprite, fallingSprite) {
 
 // helper function to help decide color based on type
 function spriteIMG(fallingObject) {
-    return colorDictionary[fallingObject.type];
+    return imageDictionary[fallingObject.type];
 }
 
 ////////////////////////////////////////////////////////////

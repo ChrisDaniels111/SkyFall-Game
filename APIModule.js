@@ -3,7 +3,7 @@
 
 
 var individualPokeURL = "https://pokeapi.co/api/v2/pokemon/";       //response.sprites.front_default
-var imagePokeURL = "https://pokeapi.co/media/sprites/pokemon/.png"
+var imagePokeURL = "https://pokeapi.co/media/sprites/pokemon/"
 
 
 var pokemonNames = ["bulbasaur", "charmander", "squirtle"];
@@ -24,12 +24,15 @@ function getPokemonIMG() {
     .done(function(response) {
         var pokemonData = response;
         var $button = $("<button>", {"class": "btn btn-danger", "type": "button", "text": "Lets Play!!", "id":"start-game"});
-        pokemonFront = `<img src="https://pokeapi.co/media/sprites/pokemon/${pokemonData.id}.png" id="pokemonFrontPage">`;
+        imagePokeURL= `${imagePokeURL}${pokemonData.id}.png`;
+        pokemonFront = `<img src=${imagePokeURL} id="pokemonFrontPage">`;
 
         $button.click(function() {
             $("#pokemon").empty();
-            startGame();
+            startGame();                    // START GAME
+            createSpecialMoveButton();
         });
+
         $("#pokemon").empty(); // clear div
         $("#pokemon").append(pokemonFront);
         $("#pokemon").append(listPokemonType(pokemonData));
@@ -38,9 +41,6 @@ function getPokemonIMG() {
     });
 }
 
-
-
-// console.log(individualPokeURL + pokemonNames[1]);
 
 
 function listPokemonType(pokemonData) {
