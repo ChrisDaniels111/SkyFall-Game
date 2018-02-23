@@ -35,15 +35,15 @@ var myGamePiece,
     myBackground;
 var fallingSprites = [];                                // contains all the falling sprite objects on screen         
 var imageDictionary = {
-    cloud: './images/boo.png',
-    sun: './images/fire.png',
+    // heals
+    angel: './images/angel2.png',
+    mushroom: './images/berry2.png',
+    // damage
+    fire: './images/fire.png',
     lightning: './images/bolt.png',
-    healthBall: './images/mushroom.png',
-    megaHealthBall: './images/berry.png',
-    dollar1: './images/coin.png',
-    dollar5: './images/coin.png',
-    dollar10: './images/coin.png',
-    dollar20: './images/coin.png',
+    // points
+    coin0: './images/coin2.png',
+    coin1: './images/coin2.png'
 }
 
 
