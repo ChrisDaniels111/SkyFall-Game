@@ -8,7 +8,9 @@ var specialMoveDict = {
     fire: './images/fire-special2.png',
     water: './images/water2.png',
     ghost: './images/boo.png',
-    default: './images/fire.png'
+    electric: './images/bolt.png',
+    rock: './images/rock.png',
+    default: './images/angel2.png'
 }
 
 
