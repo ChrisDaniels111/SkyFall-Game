@@ -115,29 +115,23 @@ $(document).ready(function () {
 
     //////////////////// ENTER USERNAME  /////////////////////
     $('#characterSelect').hide();
-    $("#pokemon").hide();
 
    
 
     $('#start-button').click(function() {
-
         $('.user-input').remove();
-        $("#pokemon").show();
+        $("#characterSelect").show();
 
         // $('.input-group-btn').click(function(){
 
-
-        // })
-    });
-
-        // $('#characterSelect').click(function(){
+          // $('#characterSelect').click(function(){
 
         //     // $('#characterSelect').remove();
         //     $('document').ready(function() {
         //         startGame();
             
         //     });
-        // });
+    });
 
 
 
