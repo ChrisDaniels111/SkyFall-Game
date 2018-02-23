@@ -114,20 +114,21 @@ $(document).ready(function () {
 
 
     //////////////////// ENTER USERNAME  /////////////////////
+    $('#characterSelect').hide();
+    $("#pokemon").hide();
 
-    $("#characterSelect").hide()
-
-
+   
 
     $('#start-button').click(function() {
 
         $('.user-input').remove();
-        $("#characterSelect").show()
+        $("#pokemon").show();
 
-        
+        // $('.input-group-btn').click(function(){
+
+
+        // })
     });
-
-    $('#pokemon').
 
         // $('#characterSelect').click(function(){
 
