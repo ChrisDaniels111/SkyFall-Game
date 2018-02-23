@@ -34,7 +34,8 @@ var fallingObjectArray = [];                        // holds the falling objects
 var level = 1;                                      // starting level
 
 // score data
-var username = 'Patrick'; // will get it from input
+// ******* assigned in graphicHelper.js *******
+var username; // will get it from input
 var arrayOfPlayers = [
     {username: 'Amber', score: 100},
     {username: 'Chris', score: 50},
@@ -156,9 +157,6 @@ function buildFallingObjects(arrayOfTypes, arrayOfAmount) {
 
 
 
-// **********************
-// build an api connection to create special falling objects []
-// **********************
 
 
 
