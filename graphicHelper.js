@@ -55,9 +55,9 @@ function updateSpecialMove() {
 }
 
 
-
-// CALL THIS IN START BUTTON
-
+///////////////////////////////////////////////////////////
+/////////////// CALL THIS IN START BUTTON /////////////////
+///////////////////////////////////////////////////////////
 function createSpecialMoveButton() {
     var $button = $("<button>", {"class": "btn btn-primary", "id": "special", "type": "button", "text": "Special Ready"});
     $button.click(makeSpecialSprites);
@@ -65,6 +65,9 @@ function createSpecialMoveButton() {
     buttonExist = true;
     // myGameArea.key = 32
 }
+
+///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
 
 function specialSpeedX() {
     var num = Math.random() * 20; // this will get a number between 1 and 99;
