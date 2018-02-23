@@ -37,54 +37,76 @@ var level = 1;                                      // starting level
 // ******* assigned in graphicHelper.js *******
 var username; // will get it from input
 var arrayOfPlayers = [
-    {username: 'Amber', score: 100},
-    {username: 'Chris', score: 50},
+    {username: 'Amber', score: 1000},
+    {username: 'AAA', score: 999},
+    {username: 'Chris', score: 888},
+    {username: 'Random', score: 679},
+    {username: 'Patrick', score: 234},
 ];
 
-var fallingObjectData = {                           // holds the stats for different objects
-    cloud: ['cloud', 0, -1],
-    sun: ['sun', -1, -3],
-    lightning: ['lightning', -3, -5],
-    healthBall: ['healthBall', 0, 2],
-    megaHealthBall: ['megaHealthBall', 6, 6],
-    dollar1: ['dollar1', 1, 0],
-    dollar5: ['dollar5', 5, 0],
-    dollar10: ['dollar10', 10, 1],
-    dollar20: ['dollar20', 20, 5]
+
+// ********************************************
+// ************* Level Design *****************
+// ********************************************
+
+var imageDictionary = {
+    // heals
+    angel: './images/angel2.png',
+    berry: './images/berry2.png',
+    // damage
+    fire: './images/fire.png',
+    lightning: './images/bolt.png',
+    // points
+    coin0: './images/coin2.png',
+    coin1: './images/coin2.png'
+}
+
+// holds the stats for different objects
+var fallingObjectData = {     
+    // heals
+    angel: ['angel', 0, 5],
+    berry: ['berry', 0, 10],
+    // damage              
+    fire: ['fire', 0, -15],
+    lightning: ['lightning', -5, 0],
+    // points
+    coin0: ['coin0', 5, 0],
+    coin1: ['coin1', 10, 0],
 };
 
 // levelData: arrays of keys for type of FallingObjects to be made
 // levelAmount: arrays of FallingObjects amounts to be made
 // keys have to be entered via [] notation
 var levelData = {
-    1: ['dollar1', 'dollar5', 'dollar10'],
-    2: ['healthBall', 'dollar5', 'sun', 'lightning'],
-    3: ['cloud', 'dollar10', 'lightning'],
-    4: ['cloud', 'dollar5', 'lightning'],
-    5: ['cloud', 'dollar5', 'lightning'],
-    6: ['cloud', 'dollar5', 'lightning'],
+    1: ['lightning', 'angel', 'coin0'],
+    2: ['angel', 'coin0', 'fire', 'lightning'],
+    3: ['fire', 'coin1', 'lightning'],
+    4: ['fire', 'coin1', 'lightning', 'berry'],
+    5: ['fire', 'coin1', 'lightning', 'berry'],
+    6: ['fire', 'coin1', 'lightning', 'angel'],
 };
 
 var levelAmount = {
-    1: [1, 1, 1],
-    2: [1, 1, 1, 1],
-    3: [4, 3, 4],
-    4: [2, 3, 2],
-    5: [2, 3, 2],
-    6: [2, 3, 2],
+    1: [1, 1, 2],
+    2: [1, 2, 1, 1],
+    3: [1, 1, 2],
+    4: [1, 2, 2, 1],
+    5: [2, 2, 2, 1],
+    6: [4, 2, 2, 1],
 };
 
 var levelSpeed = {
-    1: 0.5,
-    2: 1,
-    3: 1.5,
-    4: 2,
-    5: 3,
-    6: 3.5
+    1: 0.6,
+    2: 0.75,
+    3: 1,
+    4: 1.25,
+    5: 1.5,
+    6: 2
 }
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
+
+// ********************************************
+// ********************************************
 
 
 ////////////////////////////////////////////////////
@@ -115,9 +137,10 @@ function updateStatsAfterContact(player, contactingObjects) {
     }   
 }
 
+// Handles Level Incrementation
 function updateGameLevel() {
     var points = player0.points;
-    if (points >= 300 && points < 500 && level == 1) {
+    if (points >= 200 && points < 500 && level == 1) {
         level++;                         // only allow level to incrememnt up
     } else if (points >= 500 && points < 700 && level == 2) {
         level++;

@@ -7,12 +7,13 @@
 ///////////////////// START SEQUENCE ///////////////////////
 ////////////////////////////////////////////////////////////
 $('document').ready(function() {
+    createPokemonInputBox();
     $('#characterSelect').hide();
-
+    
     $('#start-button').click(function() {
         username = $('#usernameInput').val();       // assign end score username
         $('.user-input').remove();
-        $("#characterSelect").show();
+        $("#characterSelect").show();               // shows pokemon selector
 
     });
 
@@ -21,6 +22,7 @@ $('document').ready(function() {
 // canvas gets drawn in line 32: APIModule.js; startGame()
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
+
 
 
 ////////////////////////////////////////////////////////////
@@ -34,18 +36,6 @@ var myGamePiece,
     myScore,
     myBackground;
 var fallingSprites = [];                                // contains all the falling sprite objects on screen         
-var imageDictionary = {
-    cloud: './images/boo.png',
-    sun: './images/fire.png',
-    lightning: './images/bolt.png',
-    healthBall: './images/mushroom.png',
-    megaHealthBall: './images/berry.png',
-    dollar1: './images/coin.png',
-    dollar5: './images/coin.png',
-    dollar10: './images/coin.png',
-    dollar20: './images/coin.png',
-}
-
 
 
 // *********************************************************
@@ -132,6 +122,10 @@ var myGameArea = {
     }
 }
 
+// ********************************************
+// ************* Gameplay Loop ****************
+// ********************************************
+
 // y increase moves downward
 function updateGameArea() {
     // call data from testObject.js
@@ -179,6 +173,10 @@ function updateGameArea() {
         }
     }
 }
+
+// ********************************************
+// ********************************************
+
 
 ////////////////////////////////////////////////////////////
 ///////////////////// Helper Functions /////////////////////
@@ -314,5 +312,3 @@ function spriteIMG(fallingObject) {
 /////////////////// END Sprite Functions ///////////////////
 ////////////////////////////////////////////////////////////
 
-
-// add module to attach falling sprites to objects; myGamePiece to character

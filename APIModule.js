@@ -1,12 +1,5 @@
-// starter pokemons [bulbasaur, charmander, squirtle]
-// starter pokemon images
-
-
 var individualPokeURL = "https://pokeapi.co/api/v2/pokemon/";       //response.sprites.front_default
 var imagePokeURL = "https://pokeapi.co/media/sprites/pokemon/"
-
-
-var pokemonNames = ["bulbasaur", "charmander", "squirtle"];
 
 var pokemonFront;
 var pokemonType;
@@ -50,6 +43,7 @@ function listPokemonType(pokemonData) {
         var typeName = types[i]['type']['name'];
         message += capitalizeFirstLetter(typeName) + ' ';
     }
+    pokemonType = message;
     return `<p>${message}</p>`;
 }
 
@@ -83,15 +77,8 @@ function createPokemonInputBox() {
     $div.append($input);
     $div.append($span);
 
-    // <div class="input-group">
-    //   <input type="text" class="form-control" placeholder="Search for...">
-    //   <span class="input-group-btn">
-    //     <button class="btn btn-secondary" type="button">Go!</button>
-    //   </span>
-    // </div>
 
     $("#pokemon").append($label);
     $("#pokemon").append($div);
 };
 
-createPokemonInputBox();
