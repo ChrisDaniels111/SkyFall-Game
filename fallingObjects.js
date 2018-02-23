@@ -58,7 +58,7 @@ $(document).ready(function () {
     // console.log(fallingObjectsArray);
     /////////////////    END    ///////////////////////////
 
-
+    
     ////////////    USERNAME AND SCORE    /////////////////
     // class UsernameScore {
     //     constructor(username, score) {
